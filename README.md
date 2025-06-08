@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Customer Experience Analytics for Fintech Apps
 
 This project analyzes user reviews from Ethiopian banking apps on the Google Play Store to gain insights into customer experience and satisfaction. It provides tools for scraping, preprocessing, and analyzing app reviews to help understand user feedback and identify areas for improvement.
@@ -122,6 +122,3 @@ For each app, the following data is collected:
 ## Contact
 
 Email: wondebdu@gmail.com
-=======
-# Customer-Experience-Analytics-for-Fintech-Apps  
->>>>>>> 61f8e80 (docs: Adding readme to task-1 branch)
