@@ -1,4 +1,7 @@
+# Python
 __pycache__/
-*.pyc
-.venv
+# Project specific
 data/
+*.log
+# Environment variables
+.venv
