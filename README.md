@@ -144,12 +144,6 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Acknowledgments
-
-- [google-play-scraper](https://github.com/JoMingyu/google-play-scraper) for the Play Store scraping functionality
-- [pandas](https://pandas.pydata.org/) for data manipulation
-- [matplotlib](https://matplotlib.org/) and [seaborn](https://seaborn.pydata.org/) for visualizations
-
 ## Contact
 
 Email: wondebdu@gmail.com
