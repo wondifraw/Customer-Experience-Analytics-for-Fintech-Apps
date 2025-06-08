@@ -1,2 +1,2 @@
 
-# Customer Experience Analytics for Fintech Apps
+# Customer Experience Analytics in Fintech Applcations 
