@@ -19,6 +19,47 @@ class ReviewPreprocessor:
         Initialize the preprocessor
         """
     
+    def load_data(self):
+        """
+        Load all processed review data and return a combined DataFrame
+        
+        Returns:
+            pd.DataFrame: Combined DataFrame with all processed reviews
+        """
+        try:
+            # Find all processed review files
+            processed_files = glob.glob('../data/processed/*_review.csv')
+            if not processed_files:
+                logging.error("No processed review files found")
+                return pd.DataFrame()
+            
+            # Read and combine all files
+            dfs = []
+            for file in processed_files:
+                try:
+                    df = pd.read_csv(file)
+                    # Only rename if the old column names exist
+                    if 'review' in df.columns and 'review_text' not in df.columns:
+                        df = df.rename(columns={'review': 'review_text'})
+                    if 'bank' in df.columns and 'bank_name' not in df.columns:
+                        df = df.rename(columns={'bank': 'bank_name'})
+                    dfs.append(df)
+                except Exception as e:
+                    logging.error(f"Error reading file {file}: {str(e)}")
+                    continue
+            
+            if not dfs:
+                logging.error("No data could be loaded from any file")
+                return pd.DataFrame()
+            
+            # Combine all DataFrames
+            combined_df = pd.concat(dfs, ignore_index=True)
+            return combined_df
+            
+        except Exception as e:
+            logging.error(f"Error loading data: {str(e)}")
+            return pd.DataFrame()
+    
     def clean_review(self, text):
         """
         Clean and standardize review text
@@ -57,17 +98,22 @@ class ReviewPreprocessor:
             if df.empty:
                 return pd.DataFrame()
             
-            # Create a copy to avoid modifying original
             processed_df = df.copy()
             
+            # Ensure we have the correct column names
+            if 'review' in processed_df.columns:
+                processed_df = processed_df.rename(columns={'review': 'review_text'})
+            if 'bank' in processed_df.columns:
+                processed_df = processed_df.rename(columns={'bank': 'bank_name'})
+                
             # Clean review text
-            processed_df['review'] = processed_df['review'].apply(self.clean_review)
+            processed_df['review_text'] = processed_df['review_text'].apply(self.clean_review)
             
             # Remove empty reviews
-            processed_df = processed_df[processed_df['review'].str.len() > 0]
+            processed_df = processed_df[processed_df['review_text'].str.len() > 0]
             
             # Remove duplicates
-            processed_df = processed_df.drop_duplicates(subset=['review', 'bank'])
+            processed_df = processed_df.drop_duplicates(subset=['review_text', 'bank_name'])
             
             # Ensure date format
             processed_df['date'] = pd.to_datetime(processed_df['date']).dt.strftime('%Y-%m-%d')
@@ -113,11 +159,3 @@ class ReviewPreprocessor:
         except Exception as e:
             logging.error(f"Error in process_all_banks: {str(e)}")
 
-if __name__ == "__main__":
-    try:
-        # Initialize and run preprocessor
-        preprocessor = ReviewPreprocessor()
-        preprocessor.process_all_banks()
-        
-    except Exception as e:
-        logging.error(f"Error in main execution: {str(e)}") 
