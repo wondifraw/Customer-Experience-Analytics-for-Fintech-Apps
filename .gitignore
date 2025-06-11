@@ -6,6 +6,7 @@ data/
 # Environment variables
 .venv
 <<<<<<< HEAD
+<<<<<<< HEAD
 project_report.pdf
 project_report.md
 =======
@@ -18,3 +19,13 @@ project_report.pdf
 # Coverage reports
 .coverage
 >>>>>>> task-1
+=======
+project_report.pdf
+project_report.md
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+# Pytest cache     
+.pytest_cache/
+# Coverage reports
+.coverage
+>>>>>>> task-2
