@@ -6,11 +6,6 @@ USERNAME = 'wonde'
 PASSWORD = '1234'   
 DSN = 'localhost/XEPDB1'   
 
-# File paths
-CBE_PATH = '../data/processed/cbe_review.csv'
-BOE_PATH = '../data/processed/boe_review.csv'
-DASHEN_PATH = '../data/processed/dashen_review.csv'
-
 def create_connection():
     """Create a connection to the Oracle database."""
     try:
