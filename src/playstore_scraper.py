@@ -12,7 +12,7 @@ logging.basicConfig(
         logging.FileHandler('scraper.log'),
         logging.StreamHandler()
     ]
-)
+)   
 
 class PlayStoreScraper:
     def __init__(self):
