@@ -124,7 +124,7 @@ class ReviewPreprocessor:
             logging.error(f"Error processing reviews: {str(e)}")
             return pd.DataFrame()
     
-    def process_all_banks(self):
+    def process_all_banks(self):  
         """
         Process reviews for all banks
         """

@@ -5,5 +5,16 @@ data/
 *.log
 # Environment variables
 .venv
+<<<<<<< HEAD
 project_report.pdf
 project_report.md
+=======
+project_report.md
+project_report.pdf
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+# Pytest cache  
+.cache/
+# Coverage reports
+.coverage
+>>>>>>> task-1
